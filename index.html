@@ -5,14 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Year In Progress</title>
         <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     </head>
     <body>
+        <img id="dvd" src="images/hourglass-bounce.png" alt="DVD" />
         <div class="container">
             <h1>Year in Progress</h1>
             <div class="progress-bar">
                 <div class="progress" id="progress"></div>
             </div>
-            <p id="text"></p>
+            <div class="progress-line">
+                <div class="nav-left">
+                  <a href="plan.html" class="nav-button">&lt;Plan</a>
+                </div>
+                <p class="progress-text" id="text"></p>
+                <div class="nav-right">
+                  <a href="reflect.html" class="nav-button">Reflect&gt;</a>
+                </div>
+            </div> 
+            <div class="toggles">
+                <label>
+                  <input type="checkbox" id="toggle-dvd" />
+                  Show bouncing DVD
+                </label>
+              </div>                         
         </div>
         <script src="script.js"></script>
     </body>

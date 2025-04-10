@@ -1,34 +1,151 @@
 body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to right, #000000, #380202);
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #00264d, #00b3b3);
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    text-align: center;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
+    width: 100%;
 }
 
 .progress-bar {
-    width: 80%;
-    height: 50px;
-    background-color: #e0e0f0;
+    width: 80vw;               /* 90% of the viewport width */
+    max-width: 800px;          /* Optional: limit on large screens */
+    height: 70px;
+    background-color: #fffdfd;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     overflow: hidden;
     margin: 20px auto;
-}
+    transition: all 0.2s ease-in; /* default state transition (fast hover in) */
+  }
 
 .progress {
     height: 100%;
-    background-color: #00aaff;
+    background-color: #ff2c2c;
     width: 0%;
-    transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out, filter 0.3s ease-in-out;
 }
 
 p {
     font-size: 1.5rem;
 }
+
+.progress-line {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* space between items */
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; /* key to center the whole block */
+    flex-wrap: wrap;
+  }
+  
+  .nav-left, .nav-right {
+    width: 300px; /* You can tweak this if needed */
+    text-align: center;
+  }
+  
+  .progress-text {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+
+h1 {
+    font-size: 3.2rem;       /* Bigger */
+    font-weight: 800;      /* Super bold */
+    margin-bottom: 30px;
+    letter-spacing: 1px;   /* Optional: wider spacing */
+    text-shadow: 2px 2px 4px rgba(236, 2, 2, 0.183); /* subtle red glow */
+  }
+
+  .highlight {
+    color: #ff2c2c;
+    font-weight: 600;
+  }
+
+  /* hover effects */
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 5px #ff2c2c; }
+    50%  { box-shadow: 0 0 15px #ff2c2c; }
+    100% { box-shadow: 0 0 5px #ff2c2c; }
+  }
+
+  .progress-bar:hover {
+    background-color: #fffdfd; /* subtle lighten of background */
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    transform: scale(1.03); /* slight pop */
+    animation: pulse 1.5s infinite ease-in-out;
+    transition: all 0.4s ease-out; /* slower fade out when hover ends */
+  }
+  
+  .progress:hover {
+    filter: brightness(1.1); /* make red slightly brighter on hover */
+    transition: filter 0.4s ease-out;
+  }
+
+  /* navigation links */
+ 
+  .nav-button {
+    color: #fc6868;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .nav-button:hover {
+    color: #ff5555;
+  }
+  
+
+  /* toggles */
+
+  .toggles {
+    margin-top: 30px;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  #dvd {
+    width: 80px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 0;
+    display: none;
+  }
+
+  .sand-trail {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #e87f7f;
+    border-radius: 50%;
+    opacity: 0.8;
+    z-index: 0;
+    pointer-events: none;
+    animation: fadeOut 1s forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.5); }
+  }
