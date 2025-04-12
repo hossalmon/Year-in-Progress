@@ -1,21 +1,27 @@
 body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(to right, #000000, #380202);
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
-    display: flex;
-    justify-content: center; /* center horizontally */
-    align-items: center;     /* center vertically */
-    text-align: center;
-    flex-direction: column;
-    overflow: hidden;
+  margin: 0;
+  padding: 40px 20px;
+  background: linear-gradient(to right, #000000, #380202);
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+
+
 .container {
-    text-align: center;
-    width: 100%;
+  max-width: 800px;
+  width: 100%;
+  margin: 160px auto 0 auto; /* top margin pushes it below fixed top bar */
+  box-sizing: border-box;
+  text-align: center;
 }
+
 
 .progress-bar {
     width: 80vw;               /* 90% of the viewport width */
@@ -25,7 +31,7 @@ body {
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     overflow: hidden;
-    margin: 20px auto;
+    margin: 5px auto;
     transition: all 0.2s ease-in; /* default state transition (fast hover in) */
   }
 
@@ -41,15 +47,17 @@ p {
 }
 
 .progress-line {
-    display: flex;
-    align-items: center;
-    gap: 40px; /* space between items */
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content; /* key to center the whole block */
-    flex-wrap: wrap;
-  }
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+  align-items: center;
+  justify-items: center;
+  margin-top: 1px;
+  margin:auto;
+  width: 100%;
+  max-width: 800px;
+  
+}
+
   
   .nav-left, .nav-right {
     width: 300px; /* You can tweak this if needed */
@@ -57,17 +65,16 @@ p {
   }
   
   .progress-text {
-    flex-grow: 1;
     text-align: center;
     font-size: 1.5rem;
     color: white;
-    margin: 0;
     white-space: nowrap;
   }
   
 
 h1 {
     font-size: 3.2rem;       /* Bigger */
+    font-family: 'Orbitron', sans-serif;
     font-weight: 800;      /* Super bold */
     margin-bottom: 30px;
     letter-spacing: 1px;   /* Optional: wider spacing */
@@ -119,7 +126,7 @@ h1 {
   /* toggles */
 
   .toggles {
-    margin-top: 30px;
+    margin-top: 20px;
     color: white;
     font-size: 1rem;
   }
@@ -149,3 +156,136 @@ h1 {
     0% { opacity: 0.8; transform: scale(1); }
     100% { opacity: 0; transform: scale(0.5); }
   }
+
+  /* === Top Bar === */
+.top-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 80px; /* adjust as needed */
+  width: auto;
+  display: block;
+}
+
+.top-links {
+  display: flex;
+  gap: 20px;
+}
+
+.top-link {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff2c2c;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid #ff2c2c;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.top-link:hover {
+  background-color: #ff2c2c;
+  color: #000;
+  box-shadow: 0 0 10px #ff2c2c;
+}
+
+/* === Toggle Buttons === */
+.toggle-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+
+.toggle-btn {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background-color: #ff2c2c;
+  box-shadow: 0 0 8px rgba(255, 44, 44, 0.8);
+}
+
+
+/* === Sidebar === */
+.sidebar {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-btn {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #ff2c2c;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  width: 120px;
+  text-align: center;
+  box-shadow: 0 0 0 transparent;
+}
+
+.side-btn:hover {
+  background-color: #ff2c2c;
+  color: #000;
+  box-shadow: 0 0 12px #ff2c2c;
+}
+
+
+/* === Social Links === */
+.social-links {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+
+.social-links a {
+  margin: 0 10px;
+  display: inline-block;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* makes SVG white on dark bg */
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+  filter: brightness(0) invert(19%) sepia(89%) saturate(4666%) hue-rotate(356deg) brightness(101%) contrast(108%);
+}
+
+
+
+
