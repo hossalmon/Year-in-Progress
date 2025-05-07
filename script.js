@@ -1,23 +1,54 @@
 // Track toggle state
-let currentMode = "year"; // "year", "day", "week", "month"
-
-// Get heading and bar references
+let activeMode = "year"; // default
 const heading = document.querySelector("h1");
 const progressText = document.getElementById("text");
 const progressBar = document.getElementById("progress");
+
+// Dropdown references
+const modeToggle = document.querySelector(".mode-toggle");
+const modeOptions = document.querySelector(".mode-options");
+
+// Dropdown toggle
+modeToggle.addEventListener("click", () => {
+  const isVisible = modeOptions.style.display === "block";
+  modeOptions.style.display = isVisible ? "none" : "block";
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".mode-dropdown")) {
+    modeOptions.style.display = "none";
+  }
+});
+
+// Handle dropdown mode selection
+document.querySelectorAll(".mode-option").forEach(btn => {
+  btn.addEventListener("click", () => {
+    activeMode = btn.getAttribute("data-feature");
+
+    // Update UI
+    document.querySelectorAll(".mode-option").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    updateProgress();
+    modeOptions.style.display = "none";
+  });
+});
+
+
 
 // Define update logic
 function updateProgress() {
   const now = new Date();
   let percent, label;
 
-  if (currentMode === "day") {
+  if (activeMode === "day") {
     const secondsSinceMidnight = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
     percent = (secondsSinceMidnight / 86400) * 100;
-    label = `${now.toLocaleDateString()} is <span class="highlight">${percent.toFixed(2)}%</span> complete.`;
+    label = `${now.toLocaleDateString()} is <span class="highlight">${percent.toFixed(4)}%</span> complete.`;
     heading.textContent = "Day in Progress";
 
-  } else if (currentMode === "week") {
+  } else if (activeMode === "week") {
     const dayOfWeek = now.getDay(); // Sunday = 0, Saturday = 6
     const secondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
     const totalSeconds = (dayOfWeek * 86400) + secondsToday;
@@ -25,7 +56,7 @@ function updateProgress() {
     label = `This week is <span class="highlight">${percent.toFixed(2)}%</span> complete.`;
     heading.textContent = "Week in Progress";
 
-  } else if (currentMode === "month") {
+  } else if (activeMode === "month") {
     const start = new Date(now.getFullYear(), now.getMonth(), 1);
     const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     const total = end - start;

@@ -1,72 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Year In Progress</title>
-        <link rel="stylesheet" href="style.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <img id="dvd" src="images/hourglass-bounce.png" alt="DVD" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Year In Progress</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-        <div class="top-bar">
-          <a href="index.html" class="logo">
-            <img src="images/logo-draft-3.png" alt="Year In Progress Logo" />
-          </a>
-          <div class="top-links">
-            <a href="#" class="top-link">About</a>
-            <a href="#" class="top-link">Shop</a>
+  <!-- Bouncing Hourglass Image -->
+  <img id="dvd" src="images/hourglass-bounce.png" alt="DVD" />
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="left-column">
+      <a href="index.html" class="logo">
+        <img src="images/logo-draft-3.png" alt="Year In Progress Logo" />
+      </a>
+  
+      <div class="toggle-buttons">
+        <div class="mode-dropdown">
+          <button class="mode-toggle">
+            <img src="images/calendar.svg" alt="Calendar Icon" />
+          </button>
+          <div class="mode-options">
+            <button class="mode-option" data-feature="year">Year</button>
+            <button class="mode-option" data-feature="month">Month</button>
+            <button class="mode-option" data-feature="week">Week</button>
+            <button class="mode-option" data-feature="day">Day</button>
           </div>
         </div>
-        
-        
-        <div class="container">
-            <h1>Year in Progress</h1>
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-            </div>
-            <div class="progress-line">
-                <div class="nav-left">
-                  <a href="plan.html" class="nav-button">&lt;Plan</a>
-                </div>
-                <p class="progress-text" id="text"></p>
-                <div class="nav-right">
-                  <a href="reflect.html" class="nav-button">Reflect&gt;</a>
-                </div>
-            </div>
-            
-            <div class="toggle-buttons">
-                  <button class="toggle-btn" data-feature="dvd" title="Bouncing Hourglass"></button>
-                  <button class="toggle-btn" data-feature="day" title="Toggle Day Progress"></button>
-                  <button class="toggle-btn" data-feature="week" title="Toggle Week Progress"></button>
-                  <button class="toggle-btn" data-feature="month" title="Toggle Month Progress"></button>
-            </div>
+        <button class="toggle-btn" data-feature="dvd" title="Bouncing Hourglass">
+          <img src="images/hourglass.svg" alt="Hourglass Icon" />
+        </button>
+      </div>
+    </div>
+  
+    <div class="top-links">
+      <a href="#" class="top-link">About</a>
+      <a href="#" class="top-link">Shop</a>
+    </div>
+  </div>
+  
 
-              
-            </div> 
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Year in Progress</h1>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+    <div class="progress-line">
+      <div class="nav-left">
+        <a href="plan.html" class="nav-button">&lt;Plan</a>
+      </div>
+      <p class="progress-text" id="text"></p>
+      <div class="nav-right">
+        <a href="reflect.html" class="nav-button">Reflect&gt;</a>
+      </div>
+    </div>
+  </div>
 
-            <div class="toggles">
+  <!-- Social Links -->
+  <div class="social-links">
+    <a href="https://x.com/h_aminlol" target="_blank" title="X (Twitter)">
+      <img src="images/twitter-alt-circle.svg" alt="X" />
+    </a>
+    <a href="https://instagram.com/hossalmon" target="_blank" title="Instagram">
+      <img src="images/instagram.svg" alt="Instagram" />
+    </a>
+    <a href="https://github.com/hossalmon" target="_blank" title="GitHub">
+      <img src="images/github.svg" alt="GitHub" />
+    </a>
+  </div>
 
-              </div>                         
-        </div>
-
-        <div class="social-links">
-          <a href="https://x.com/h_aminlol" target="_blank" title="X (Twitter)">
-            <img src="images/twitter-alt-circle.svg" alt="X" />
-          </a>
-          <a href="https://instagram.com/hossalmon" target="_blank" title="Instagram">
-            <img src="images/instagram.svg" alt="Instagram" />
-          </a>
-          <a href="https://github.com/your-handle" target="_blank" title="GitHub">
-            <img src="images/github.svg" alt="GitHub" />
-          </a>
-        </div>
-        
-
-        <script src="script.js"></script>
-    </body>
+  <script src="script.js"></script>
+</body>
 </html>
+
+
