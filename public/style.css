@@ -259,23 +259,26 @@ h1 {
 /* === Mode Dropdown Menu === */
 .mode-dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .mode-options {
   display: none;
   position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 48px; /* dropdown appears to the right */
+  top: 0;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   z-index: 999;
   min-width: 120px;
   padding: 5px 0;
+  flex-direction: column;
 }
 
 .mode-option {
+  display: block;
   background: none;
   border: none;
   width: 100%;
@@ -288,6 +291,11 @@ h1 {
   transition: background 0.2s ease;
 }
 
+/* Hover activates dropdown */
+.mode-dropdown:hover .mode-options {
+  display: flex;
+}
+
 .mode-option:hover {
   background-color: #ff2c2c;
   color: white;
@@ -296,6 +304,16 @@ h1 {
 .mode-option.active {
   background-color: #ff2c2c;
   color: white;
+}
+
+/* Highlight the calendar toggle if active */
+.mode-toggle.active {
+  background-color: #ff2c2c;
+  box-shadow: 0 0 10px #ff2c2c;
+}
+
+.mode-toggle.active img {
+  filter: brightness(100%) invert(100%);
 }
 
 /* === Social Links === */
