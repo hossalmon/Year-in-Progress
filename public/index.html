@@ -16,7 +16,6 @@
   <img id="dvd" src="images/hourglass-bounce.png" alt="DVD" />
   -->
 
-  <!-- Top Bar -->
   <div class="top-bar">
     <div class="left-column">
       <a href="index.html" class="logo">
@@ -34,17 +33,20 @@
             <button class="mode-option" data-feature="day">Day</button>
           </div>
         </div>
-        <!-- <button class="toggle-btn" data-feature="dvd" title="Bouncing Hourglass">
-          <img src="images/hourglass.svg" alt="Hourglass Icon" />
-        </button> -->
+  
+        <button class="toggle-btn" data-feature="quote" title="Quote of the Day">
+          <img src="images/quotes.svg" alt="Quote Icon" />
+        </button>
       </div>
     </div>
   
+    <!-- ⬇️ This should NOT be inside .left-column -->
     <div class="top-links">
       <a href="#" class="top-link">About</a>
       <a href="#" class="top-link">Shop</a>
     </div>
   </div>
+  
   
 
   <!-- Main Content -->
@@ -62,6 +64,12 @@
         <a href="reflect.html" class="nav-button">Reflect&gt;</a>
       </div>
     </div>
+
+    <!-- Quote of the Day section-->
+    <div id="quote-box" class="quote-box" style="display: none;">
+      <p id="quote-text"></p>
+    </div>
+
   </div>
 
   <!-- Social Links -->

@@ -316,6 +316,36 @@ h1 {
   filter: brightness(100%) invert(100%);
 }
 
+/* Quote of the Day */
+
+.quote-box {
+  margin: 30px auto 0 auto;
+  padding: 16px 24px;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ff2c2c;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 44, 44, 0.2);
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.quote-box p {
+  margin: 0;
+  color: #ffcccc; /* light red tone for contrast */
+}
+
+#quote-text {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+
 /* === Social Links === */
 .social-links {
   position: absolute;

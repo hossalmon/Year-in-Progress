@@ -95,6 +95,62 @@ function updateProgress() {
   progressText.innerHTML = label;
 }
 
+// ===== RANDOM QUOTE TOGGLE =====
+
+const quotes = [
+  "Small steps every day add up to big change.",
+  "Discipline is remembering what you want.",
+  "The secret of getting ahead is getting started.",
+  "Success is the sum of small efforts repeated daily.",
+  "You don’t have to be extreme, just consistent.",
+  "Push yourself, because no one else is going to do it for you.",
+  "Done is better than perfect.",
+  "It always seems impossible until it’s done.",
+  "Your future is created by what you do today, not tomorrow.",
+  "A year from now, you’ll wish you started today.",
+  "The journey of a thousand miles begins with a single step.",
+  "You are what you do, not what you say you’ll do.",
+  "Motivation gets you going. Discipline keeps you growing.",
+  "Show up. That’s half the battle.",
+  "Create before you consume.",
+  "Progress, not perfection.",
+  "Momentum beats motivation.",
+  "You won’t always be motivated. You must learn to be disciplined.",
+  "Simplicity is the ultimate sophistication.",
+  "Don’t wait for opportunity. Create it."
+];
+
+// Helper to get a random quote
+function getRandomQuote() {
+  const index = Math.floor(Math.random() * quotes.length);
+  return quotes[index];
+}
+
+// DOM elements
+const quoteBtn = document.querySelector('[data-feature="quote"]');
+const quoteBox = document.getElementById("quote-box");
+const quoteText = document.getElementById("quote-text");
+
+// Toggle event
+quoteBtn.addEventListener("click", () => {
+  const isVisible = quoteBox.style.display === "block";
+
+  if (isVisible) {
+    quoteBox.style.display = "none";
+    quoteBtn.classList.remove("active");
+  } else {
+    quoteText.textContent = `"${getRandomQuote()}"`;
+    quoteBox.style.display = "block";
+    quoteBtn.classList.add("active");
+  }
+});
+
+
+
+
+
+
+
 // Hourglass toggle
 document.querySelectorAll(".toggle-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -112,7 +168,7 @@ document.querySelectorAll(".toggle-btn").forEach((btn) => {
 updateProgress();
 setInterval(updateProgress, 1000);
 
-// Bouncing DVD logic
+// Bouncing DVD logic ***inactive***
 const dvd = document.getElementById("dvd");
 let x = 100, y = 100, dx = 2, dy = 2;
 let dvdWidth = 80, dvdHeight = 40;
