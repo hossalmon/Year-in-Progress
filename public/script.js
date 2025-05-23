@@ -23,10 +23,11 @@ modeToggle.addEventListener("click", () => {
     activeMode = "year";
     modeToggle.classList.remove("active");
 
-    // Clear dropdown highlights
     document.querySelectorAll(".mode-option").forEach(b => b.classList.remove("active"));
 
-    updateProgress();
+    const { percent, label, headingText } = updateProgress();
+    applyProgress(percent, label, headingText);
+
     modeOptions.style.display = "none";
   }
 });
@@ -39,48 +40,44 @@ document.querySelectorAll(".mode-option").forEach(btn => {
     if (selected !== activeMode) {
       activeMode = selected;
 
-      // Highlight correct dropdown item
       document.querySelectorAll(".mode-option").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
-      // Mark calendar toggle as active
       modeToggle.classList.add("active");
 
-      updateProgress();
+      const { percent, label, headingText } = updateProgress();
+      applyProgress(percent, label, headingText);
     }
 
     modeOptions.style.display = "none";
   });
 });
 
-// Update progress bar and label
+// Return progress info based on activeMode
 function updateProgress() {
   const now = new Date();
-  let percent, label;
+  let percent, label, headingText;
 
   if (activeMode === "day") {
     const seconds = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
     percent = (seconds / 86400) * 100;
-    label = `${now.toLocaleDateString()} is <span class="highlight">${percent.toFixed(4)}%</span> complete.`;
-    heading.textContent = "Day in Progress";
-
+    label = `${now.toLocaleDateString()} is <span class="highlight">${percent.toFixed(6)}%</span> complete.`;
+    headingText = "Day in Progress";
   } else if (activeMode === "week") {
     const day = now.getDay();
     const secondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
     const totalSeconds = day * 86400 + secondsToday;
     percent = (totalSeconds / (7 * 86400)) * 100;
-    label = `This week is <span class="highlight">${percent.toFixed(2)}%</span> complete.`;
-    heading.textContent = "Week in Progress";
-
+    label = `This week is <span class="highlight">${percent.toFixed(6)}%</span> complete.`;
+    headingText = "Week in Progress";
   } else if (activeMode === "month") {
     const start = new Date(now.getFullYear(), now.getMonth(), 1);
     const end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
     const total = end - start;
     const elapsed = now - start;
     percent = (elapsed / total) * 100;
-    label = `${now.toLocaleString('default', { month: 'long' })} is <span class="highlight">${percent.toFixed(2)}%</span> complete.`;
-    heading.textContent = "Month in Progress";
-
+    label = `${now.toLocaleString('default', { month: 'long' })} is <span class="highlight">${percent.toFixed(6)}%</span> complete.`;
+    headingText = "Month in Progress";
   } else {
     const start = new Date(now.getFullYear(), 0, 1);
     const end = new Date(now.getFullYear() + 1, 0, 1);
@@ -88,12 +85,48 @@ function updateProgress() {
     const elapsed = now - start;
     percent = (elapsed / total) * 100;
     label = `${now.getFullYear()} is <span class="highlight">${percent.toFixed(6)}%</span> complete.`;
-    heading.textContent = "Year in Progress";
+    headingText = "Year in Progress";
   }
 
-  progressBar.style.width = `${percent}%`;
-  progressText.innerHTML = label;
+  return { percent, label, headingText };
 }
+
+// Visually update the bar, text, and heading
+function applyProgress(percent, label, headingText) {
+  requestAnimationFrame(() => {
+    heading.textContent = headingText;
+    progressText.innerHTML = label;
+
+    progressBar.style.transition = "width 1.2s ease-in-out, filter 0.3s ease-in-out";
+    progressBar.style.width = `${percent}%`;
+  });
+}
+
+
+// Animate progress on page load
+window.addEventListener("DOMContentLoaded", () => {
+  const { percent, label, headingText } = updateProgress();
+
+  // Reset and reflow bar
+  progressBar.style.transition = "none";
+  progressBar.style.width = "0%";
+  void progressBar.offsetWidth;
+
+  // Animate and apply UI updates
+  progressBar.style.transition = "width 2s ease-in-out, filter 0.3s ease-in-out";
+  setTimeout(() => {
+    applyProgress(percent, label, headingText);
+  }, 50);
+});
+
+setInterval(() => {
+  const { percent, label, headingText } = updateProgress();
+  applyProgress(percent, label, headingText);
+}, 1000);
+
+
+
+
 
 // ===== RANDOM QUOTE TOGGLE =====
 

@@ -35,7 +35,7 @@ body {
   height: 100%;
   background-color: #ff2c2c;
   width: 0%;
-  transition: width 1s ease-in-out, filter 0.3s ease-in-out;
+  transition: width 2s ease-in-out, filter 0.3s ease-in-out;
 }
 
 p {
@@ -43,10 +43,9 @@ p {
 }
 
 .progress-line {
-  display: grid;
-  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   margin: auto;
   width: 100%;
   max-width: 800px;
@@ -55,6 +54,7 @@ p {
 .nav-left, .nav-right {
   width: 300px;
   text-align: center;
+  display: none; /*REMOVE THIS ONCE PLAN AND REFLECT FEATURES AVAILABLE */
 }
 
 .progress-text {
@@ -371,6 +371,7 @@ h1 {
   transform: scale(1.2);
   filter: brightness(0) invert(19%) sepia(89%) saturate(4666%) hue-rotate(356deg) brightness(101%) contrast(108%);
 }
+
 
 
 
