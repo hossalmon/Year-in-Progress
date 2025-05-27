@@ -21,36 +21,41 @@
       <a href="index.html" class="logo">
         <img src="images/logo-draft-3.png" alt="Year In Progress Logo" />
       </a>
-  
-      <div class="toggle-buttons">
-        <div class="mode-dropdown">
-          <button class="mode-toggle">
-            <img src="images/calendar.svg" alt="Calendar Icon" />
-          </button>
-          <div class="mode-options">
-            <button class="mode-option" data-feature="month">Month</button>
-            <button class="mode-option" data-feature="week">Week</button>
-            <button class="mode-option" data-feature="day">Day</button>
-          </div>
-        </div>
-  
-        <button class="toggle-btn" data-feature="quote" title="Quote of the Day">
-          <img src="images/quotes.svg" alt="Quote Icon" />
-        </button>
-      </div>
     </div>
-  
-    <!-- ⬇️ This should NOT be inside .left-column -->
+
     <div class="top-links">
       <a href="about.html" class="top-link">About</a>
       <a href="shop.html" class="top-link">Shop</a>
     </div>
   </div>
-  
-  
 
   <!-- Main Content -->
   <div class="container">
+
+    <!-- Toggle Buttons Section -->
+    <div class="toggle-buttons">
+
+      <!-- Calendar Mode Buttons -->
+      <div class="mode-buttons">
+        <button class="mode-btn" data-feature="day" title="Toggle Day Progress">
+          <img src="images/day.svg" alt="Day Icon" class="day-icon" />
+        </button>
+        <button class="mode-btn" data-feature="week" title="Toggle Week Progress">
+          <img src="images/week.svg" alt="Week Icon" />
+        </button>
+        <button class="mode-btn" data-feature="month" title="Toggle Month Progress">
+          <img src="images/month.svg" alt="Month Icon" />
+        </button>
+             <!-- Quote Toggle -->
+        <button class="toggle-btn" data-feature="quote" title="Quote of the Day">
+          <img src="images/quotes.svg" alt="Quote Icon" />
+        </button>
+      </div>
+    </div>
+
+ 
+
+    <!-- Main Title and Progress -->
     <h1>Year in Progress</h1>
     <div class="progress-bar">
       <div class="progress" id="progress"></div>
@@ -65,11 +70,10 @@
       </div>
     </div>
 
-    <!-- Quote of the Day section-->
+    <!-- Quote of the Day section -->
     <div id="quote-box" class="quote-box" style="display: none;">
       <p id="quote-text"></p>
     </div>
-
   </div>
 
   <!-- Social Links -->
@@ -88,5 +92,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
 
 

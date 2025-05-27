@@ -1,59 +1,41 @@
-// Track toggle state
+// === Track Progress State ===
 let activeMode = "year";
 const heading = document.querySelector("h1");
 const progressText = document.getElementById("text");
 const progressBar = document.getElementById("progress");
 
-// References
-const modeToggle = document.querySelector(".mode-toggle");
-const modeOptions = document.querySelector(".mode-options");
-const modeDropdown = document.querySelector(".mode-dropdown");
-
-// Show dropdown on hover
-modeDropdown.addEventListener("mouseenter", () => {
-  modeOptions.style.display = "block";
-});
-modeDropdown.addEventListener("mouseleave", () => {
-  modeOptions.style.display = "none";
-});
-
-// Toggle between active mode and reset to "year" when clicking the toggle
-modeToggle.addEventListener("click", () => {
-  if (activeMode !== "year") {
-    activeMode = "year";
-    modeToggle.classList.remove("active");
-
-    document.querySelectorAll(".mode-option").forEach(b => b.classList.remove("active"));
-
-    const { percent, label, headingText } = updateProgress();
-    applyProgress(percent, label, headingText);
-
-    modeOptions.style.display = "none";
-  }
-});
-
-// Handle dropdown selection
-document.querySelectorAll(".mode-option").forEach(btn => {
+// === Handle Mode Buttons (Day, Week, Month) ===
+document.querySelectorAll(".mode-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const selected = btn.getAttribute("data-feature");
 
-    if (selected !== activeMode) {
+    if (selected === activeMode) {
+      // Clicking the same button again: reset to "year"
+      activeMode = "year";
+
+      document.querySelectorAll(".mode-btn").forEach((b) =>
+        b.classList.remove("active")
+      );
+
+      const { percent, label, headingText } = updateProgress();
+      applyProgress(percent, label, headingText);
+    } else {
       activeMode = selected;
 
-      document.querySelectorAll(".mode-option").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".mode-btn").forEach((b) =>
+        b.classList.remove("active")
+      );
       btn.classList.add("active");
-
-      modeToggle.classList.add("active");
 
       const { percent, label, headingText } = updateProgress();
       applyProgress(percent, label, headingText);
     }
-
-    modeOptions.style.display = "none";
   });
 });
 
-// Return progress info based on activeMode
+
+
+// === Return Progress Info Based on Active Mode ===
 function updateProgress() {
   const now = new Date();
   let percent, label, headingText;
@@ -91,45 +73,40 @@ function updateProgress() {
   return { percent, label, headingText };
 }
 
-// Visually update the bar, text, and heading
+// === Apply Progress Visually ===
 function applyProgress(percent, label, headingText) {
   requestAnimationFrame(() => {
     heading.textContent = headingText;
     progressText.innerHTML = label;
-
     progressBar.style.transition = "width 1.2s ease-in-out, filter 0.3s ease-in-out";
     progressBar.style.width = `${percent}%`;
   });
 }
 
-
-// Animate progress on page load
+// === Animate on Page Load ===
 window.addEventListener("DOMContentLoaded", () => {
-  const { percent, label, headingText } = updateProgress();
+  const defaultBtn = document.querySelector(`.mode-btn[data-feature="${activeMode}"]`);
+  if (defaultBtn) defaultBtn.classList.add("active");
 
-  // Reset and reflow bar
+  const { percent, label, headingText } = updateProgress();
   progressBar.style.transition = "none";
   progressBar.style.width = "0%";
   void progressBar.offsetWidth;
 
-  // Animate and apply UI updates
   progressBar.style.transition = "width 2s ease-in-out, filter 0.3s ease-in-out";
   setTimeout(() => {
     applyProgress(percent, label, headingText);
   }, 50);
 });
 
+// === Update Every Second ===
 setInterval(() => {
   const { percent, label, headingText } = updateProgress();
   applyProgress(percent, label, headingText);
 }, 1000);
 
 
-
-
-
 // ===== RANDOM QUOTE TOGGLE =====
-
 const quotes = [
   "Small steps every day add up to big change.",
   "Discipline is remembering what you want.",
@@ -153,18 +130,15 @@ const quotes = [
   "Don’t wait for opportunity. Create it."
 ];
 
-// Helper to get a random quote
 function getRandomQuote() {
   const index = Math.floor(Math.random() * quotes.length);
   return quotes[index];
 }
 
-// DOM elements
 const quoteBtn = document.querySelector('[data-feature="quote"]');
 const quoteBox = document.getElementById("quote-box");
 const quoteText = document.getElementById("quote-text");
 
-// Toggle event
 quoteBtn.addEventListener("click", () => {
   const isVisible = quoteBox.style.display === "block";
 
@@ -179,30 +153,19 @@ quoteBtn.addEventListener("click", () => {
 });
 
 
-
-
-
-
-
-// Hourglass toggle
-document.querySelectorAll(".toggle-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const feature = btn.getAttribute("data-feature");
-    if (feature === "dvd") {
-      btn.classList.toggle("active");
-      const isActive = btn.classList.contains("active");
-      dvd.style.display = isActive ? "block" : "none";
-      isActive ? moveDVD() : cancelAnimationFrame(animationFrame);
-    }
-  });
-});
-
-// Initial and repeating updates
-updateProgress();
-setInterval(updateProgress, 1000);
-
-// Bouncing DVD logic ***inactive***
+// ===== HOURGLASS DVD TOGGLE =====
+const dvdBtn = document.querySelector('[data-feature="dvd"]');
 const dvd = document.getElementById("dvd");
+
+if (dvdBtn) {
+  dvdBtn.addEventListener("click", () => {
+    dvdBtn.classList.toggle("active");
+    const isActive = dvdBtn.classList.contains("active");
+    dvd.style.display = isActive ? "block" : "none";
+    isActive ? moveDVD() : cancelAnimationFrame(animationFrame);
+  });
+}
+
 let x = 100, y = 100, dx = 2, dy = 2;
 let dvdWidth = 80, dvdHeight = 40;
 let animationFrame;
@@ -234,6 +197,3 @@ function moveDVD() {
 
   animationFrame = requestAnimationFrame(moveDVD);
 }
-
-
-

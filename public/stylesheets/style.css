@@ -14,10 +14,11 @@ body {
 .container {
   max-width: 800px;
   width: 100%;
-  margin: 160px auto 0 auto;
+  margin: 50px auto 40px auto; /* top: 80px, bottom: 40px */
   box-sizing: border-box;
   text-align: center;
 }
+
 
 .progress-bar {
   width: 80vw;
@@ -68,7 +69,7 @@ h1 {
   font-size: 3.2rem;
   font-family: 'Orbitron', sans-serif;
   font-weight: 800;
-  margin-bottom: 30px;
+  margin: 12px 0 30px 0;
   letter-spacing: 1px;
   text-shadow: 2px 2px 4px rgba(236, 2, 2, 0.183);
 }
@@ -197,21 +198,15 @@ h1 {
   display: block;
 }
 
-/* === Toggle Panel === */
-.toggle-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
 
 /* Toggle button (shared with mode-toggle) */
 .toggle-buttons {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* aligns to the left under the logo */
-  gap: 16px; /* adjust this number for more or less space */
-  margin-top: 12px;
+  flex-direction: row;          /* horizontal layout */
+  justify-content: center;      /* center horizontally */
+  align-items: center;
+  gap: 16px;
+  margin: 24px auto 20px auto;
 }
 .toggle-btn,
 .mode-toggle {
@@ -256,65 +251,54 @@ h1 {
   filter: brightness(100%) invert(100%);
 }
 
-/* === Mode Dropdown Menu === */
-.mode-dropdown {
-  position: relative;
+/* === Calendar Mode Buttons (New) === */
+.mode-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 16px auto 8px auto;
+}
+
+.mode-btn {
+  width: 44px;
+  height: 44px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
   display: flex;
   align-items: center;
-}
-
-.mode-options {
-  display: none;
-  position: absolute;
-  left: 48px; /* dropdown appears to the right */
-  top: 0;
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  min-width: 120px;
-  padding: 5px 0;
-  flex-direction: column;
-}
-
-.mode-option {
-  display: block;
-  background: none;
-  border: none;
-  width: 100%;
-  padding: 10px 16px;
-  font-weight: 500;
-  color: black;
-  text-align: left;
+  justify-content: center;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  padding: 0;
 }
 
-/* Hover activates dropdown */
-.mode-dropdown:hover .mode-options {
-  display: flex;
+.mode-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(20%) sepia(95%) saturate(4000%) hue-rotate(0deg);
+  transition: filter 0.3s ease;
 }
 
-.mode-option:hover {
+.mode-btn:hover {
   background-color: #ff2c2c;
-  color: white;
 }
 
-.mode-option.active {
-  background-color: #ff2c2c;
-  color: white;
+.mode-btn:hover img {
+  filter: brightness(100%) invert(100%);
 }
 
-/* Highlight the calendar toggle if active */
-.mode-toggle.active {
+.mode-btn.active {
   background-color: #ff2c2c;
   box-shadow: 0 0 10px #ff2c2c;
 }
 
-.mode-toggle.active img {
+.mode-btn.active img {
   filter: brightness(100%) invert(100%);
 }
+
 
 /* Quote of the Day */
 
@@ -370,6 +354,94 @@ h1 {
 .social-links a:hover {
   transform: scale(1.2);
   filter: brightness(0) invert(19%) sepia(89%) saturate(4666%) hue-rotate(356deg) brightness(101%) contrast(108%);
+}
+
+/* === MOBILE STYLES === */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 12px;
+    font-size: 1rem;
+  }
+
+  .top-bar {
+    position: static;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .left-column {
+    align-items: center;
+  }
+
+  .top-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0;
+  }
+
+.toggle-buttons {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin: 24px auto 10px auto;
+}
+
+.toggle-btn,
+.mode-btn,
+.mode-toggle {
+  width: 40px;
+  height: 40px;
+}
+
+.toggle-btn img,
+.mode-toggle img {
+  width: 20px;
+  height: 20px;
+}
+
+  .container {
+    margin-top: 40px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .progress-bar {
+    height: 50px;
+  }
+
+  .progress-line {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-left,
+  .nav-right {
+    width: auto;
+    font-size: 1rem;
+  }
+
+  .progress-text {
+    font-size: 1.2rem;
+  }
+
+.quote-box {
+  font-size: 1rem;
+  padding: 16px 20px;
+  max-width: 70%;
+  margin: 30px auto 20px auto;  /* adds more space below */
+  line-height: 1.6;
+}
+
+  .social-links {
+    margin-top: auto;
+    margin-bottom: 16px;
+  }
 }
 
 
