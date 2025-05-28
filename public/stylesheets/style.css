@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 40px 20px;
+  min-height: 100vh;
   background: linear-gradient(to right, #000000, #380202);
   font-family: 'Montserrat', sans-serif;
   color: white;
@@ -9,15 +9,21 @@ body {
   align-items: center;
   text-align: center;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .container {
   max-width: 800px;
   width: 100%;
-  margin: 50px auto 40px auto; /* top: 80px, bottom: 40px */
+  margin: auto 0; /* top & bottom auto = vertical centering in flex parent */
+  transform: translateY(-30px); /* adjust this value for vertical control */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   text-align: center;
 }
+
 
 
 .progress-bar {
@@ -142,7 +148,7 @@ h1 {
 /* === Top Bar Layout === */
 .top-bar {
   position: absolute;
-  top: 20px;
+  top: 5px;
   left: 20px;
   display: flex;
   flex-direction: row;
@@ -378,6 +384,8 @@ h1 {
   body {
     padding: 20px 12px;
     font-size: 1rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
 
     .logo img {
@@ -427,6 +435,8 @@ h1 {
 
   .container {
     margin-top: 40px;
+    margin-bottom: 20px;
+    transform: none !important; /*Disable upward shift on mobile */
   }
 
   h1 {

@@ -1,7 +1,7 @@
 .about-content {
   max-width: 800px;
-  margin: 50px auto 0 auto;
-  padding: 0 20px;
+  width: 100%;
+  margin: auto 0;
   text-align: center;
 }
 
@@ -66,8 +66,15 @@
 /* === MOBILE RESPONSIVE === */
 @media (max-width: 600px) {
   .about-content {
+    margin: 60px 0 20px 0;
     padding: 0 12px;
-    margin-top: 40px;
+    transform: none !important;
+  }
+  
+   body {
+    min-height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .about-content h1 {
