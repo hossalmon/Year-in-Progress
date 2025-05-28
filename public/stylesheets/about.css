@@ -1,4 +1,3 @@
-
 .about-content {
   max-width: 800px;
   margin: 50px auto 0 auto;
@@ -15,7 +14,7 @@
   margin-bottom: 1.2rem;
   color: white;
   position: relative;
-  display: inline-block
+  display: inline-block;
 }
 
 .about-content h1::after {
@@ -28,8 +27,9 @@
   border-radius: 2px;
 }
 
-.about-content p, .about-content ul {
-    font-family: 'Montserrat', sans-serif;
+.about-content p, 
+.about-content ul {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -45,7 +45,8 @@
 }
 
 .about-content li {
-    display: table-row;
+  display: table-row;
+  line-height: 1.5;
 }
 
 .about-content li::before {
@@ -61,3 +62,71 @@
   display: table-cell;
   text-align: left;
 }
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 600px) {
+  .about-content {
+    padding: 0 12px;
+    margin-top: 40px;
+  }
+
+  .about-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-content h1::after {
+    height: 3px;
+    width: 50%;
+    margin-top: 8px;
+  }
+
+  .about-content p,
+  .about-content ul {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .about-content ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 24px;
+  }
+
+  .about-content li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .about-content li::before {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .about-content li span {
+    display: inline;
+    text-align: left;
+  }
+
+  .social-links {
+    position: static;
+    margin-top: 40px;
+    transform: none;
+    text-align: center;
+  }
+
+  .social-links a {
+    margin: 0 8px;
+  }
+
+  .social-links img {
+    width: 24px;
+    height: 24px;
+  }
+}
+

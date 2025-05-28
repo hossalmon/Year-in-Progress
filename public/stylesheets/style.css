@@ -69,7 +69,7 @@ h1 {
   font-size: 3.2rem;
   font-family: 'Orbitron', sans-serif;
   font-weight: 800;
-  margin: 12px 0 30px 0;
+  margin: 8px 0 30px 0;
   letter-spacing: 1px;
   text-shadow: 2px 2px 4px rgba(236, 2, 2, 0.183);
 }
@@ -163,7 +163,7 @@ h1 {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 
@@ -193,7 +193,7 @@ h1 {
 }
 
 .logo img {
-  height: 80px;
+  height: 100px;
   width: auto;
   display: block;
 }
@@ -206,7 +206,7 @@ h1 {
   justify-content: center;      /* center horizontally */
   align-items: center;
   gap: 16px;
-  margin: 24px auto 20px auto;
+  margin: 28px auto 6px auto;
 }
 .toggle-btn,
 .mode-toggle {
@@ -249,6 +249,14 @@ h1 {
 
 .toggle-btn.active img {
   filter: brightness(100%) invert(100%);
+}
+
+.toggle-btn:not(.active):hover {
+  background-color: white;
+}
+
+.toggle-btn:not(.active):hover img {
+  filter: brightness(0) invert(20%) sepia(95%) saturate(4000%) hue-rotate(0deg);
 }
 
 /* === Calendar Mode Buttons (New) === */
@@ -298,6 +306,15 @@ h1 {
 .mode-btn.active img {
   filter: brightness(100%) invert(100%);
 }
+
+.mode-btn:not(.active):hover {
+  background-color: white;
+}
+
+.mode-btn:not(.active):hover img {
+  filter: brightness(0) invert(20%) sepia(95%) saturate(4000%) hue-rotate(0deg);
+}
+
 
 
 /* Quote of the Day */
@@ -361,6 +378,11 @@ h1 {
   body {
     padding: 20px 12px;
     font-size: 1rem;
+  }
+
+    .logo img {
+    height: 100px; /* or any size you prefer for mobile */
+    width: auto;
   }
 
   .top-bar {

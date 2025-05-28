@@ -6,32 +6,31 @@ const progressBar = document.getElementById("progress");
 
 // === Handle Mode Buttons (Day, Week, Month) ===
 document.querySelectorAll(".mode-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
     const selected = btn.getAttribute("data-feature");
 
     if (selected === activeMode) {
-      // Clicking the same button again: reset to "year"
       activeMode = "year";
-
       document.querySelectorAll(".mode-btn").forEach((b) =>
         b.classList.remove("active")
       );
-
-      const { percent, label, headingText } = updateProgress();
-      applyProgress(percent, label, headingText);
     } else {
       activeMode = selected;
-
       document.querySelectorAll(".mode-btn").forEach((b) =>
         b.classList.remove("active")
       );
       btn.classList.add("active");
-
-      const { percent, label, headingText } = updateProgress();
-      applyProgress(percent, label, headingText);
     }
+
+    const { percent, label, headingText } = updateProgress();
+    applyProgress(percent, label, headingText);
+
+    // 👇 Blur with delay to override stubborn mobile focus
+    setTimeout(() => btn.blur(), 100);
   });
 });
+
+
 
 
 
